@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$/../../../app" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="OpenCVTest" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+        <option name="GRADLE_PROJECT_PATH" value=":app" />
+        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="7.1.3" />
+        <option name="LAST_KNOWN_AGP_VERSION" value="7.3.0" />
+      </configuration>
+    </facet>
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="4" platform="JVM 1.8" allPlatforms="JVM [1.8]" useProjectSettings="false">
+        <compilerSettings>
+          <option name="additionalArguments" value="-Xallow-no-source-files" />
+        </compilerSettings>
+        <compilerArguments>
+          <option name="destination" value="$MODULE_DIR$/../../../app/build/tmp/kotlin-classes/debug" />
+          <option name="classpath" value="$USER_HOME$/.gradle/caches/transforms-3/09b052b2f3cd3e0f487141d24341e48f/transformed/material-1.9.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/1ca826418683d2845afb7325c84bfdfc/transformed/appcompat-1.6.1-api.jar:/Users/applezhang/.gradle/caches/transforms-3/ea452e6009e75c95736848e8b542f2e0/transformed/jetified-viewpager2-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/a6f35f11425c553e875e7488419a83e1/transformed/fragment-1.3.6-api.jar:/Users/applezhang/.gradle/caches/transforms-3/36bd1e36142e8bda4cc9878b3cb2d5ce/transformed/jetified-activity-1.6.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/cab2f17b71c81898cf7a148f56dd02e3/transformed/jetified-lifecycle-viewmodel-savedstate-2.5.1-api.jar:/Users/applezhang/.gradle/caches/transforms-3/2b0ff0555191cc0f8f4e871a2b9e579e/transformed/jetified-kotlinx-coroutines-core-jvm-1.6.1.jar:/Users/applezhang/.gradle/caches/transforms-3/3ff7f66ceaf21a6835e094bd5b7f1a98/transformed/jetified-kotlinx-coroutines-android-1.6.1.jar:/Users/applezhang/.gradle/caches/transforms-3/18dcbde5f621aa29956016927f36dd34/transformed/jetified-kotlin-stdlib-jdk8-1.6.0.jar:/Users/applezhang/.gradle/caches/transforms-3/b8d7c90f6ece79990d1836acd8cd071a/transformed/jetified-core-ktx-1.10.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/b8fe85eab7da5689bd190a2aa367f2d0/transformed/jetified-kotlin-stdlib-jdk7-1.6.0.jar:/Users/applezhang/.gradle/caches/transforms-3/16cd0d981e559448ed1953400387ef02/transformed/jetified-savedstate-1.2.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/e2737e02473729985ed539423b9007ea/transformed/jetified-appcompat-resources-1.6.1-api.jar:/Users/applezhang/.gradle/caches/transforms-3/4c80482890707f547b6ba73a439a02c5/transformed/drawerlayout-1.1.1-api.jar:/Users/applezhang/.gradle/caches/transforms-3/c7704ac5c816c3b8c15762d3bc3d7885/transformed/coordinatorlayout-1.1.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/5ace8f95242321923df666d5fe16ce14/transformed/dynamicanimation-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/5ea25342d0261552c4163f709554c3d8/transformed/recyclerview-1.1.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/f76dec66e6d114ea135256c51e4be2b1/transformed/transition-1.2.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/8b63ccc798d5186db5563c4030b9e796/transformed/vectordrawable-animated-1.1.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/79930ebcf76983a52d78c83999fe0248/transformed/vectordrawable-1.1.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/c053c246d1c03835c8aa939d01d630fd/transformed/viewpager-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/e6b26d30b785d36bcbaa501b01ccbc26/transformed/customview-1.1.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/222b4fcd18c03267461abfe30482ce74/transformed/legacy-support-core-utils-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/b52f073da99721e8c9dd4783dcfa91f5/transformed/loader-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/ad3af91e7a017032862981b6b07414b8/transformed/core-1.10.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/681f959ccdcaad3b5fc0b80da6e871ce/transformed/jetified-annotation-experimental-1.3.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/32ed56b0f846ba578420fad15a7d126c/transformed/cursoradapter-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/16198081dbea21e900e26c90ec4195b7/transformed/cardview-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/6c1aabeb182eb695e7825d47da131084/transformed/lifecycle-runtime-2.5.1-api.jar:/Users/applezhang/.gradle/caches/transforms-3/5022ffa2f5b0f53207e4569ebe329842/transformed/versionedparcelable-1.1.1-api.jar:/Users/applezhang/.gradle/caches/transforms-3/b33539b98f1d04e4128507b054b4eda1/transformed/lifecycle-viewmodel-2.5.1-api.jar:/Users/applezhang/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar:/Users/applezhang/.gradle/caches/transforms-3/bd3141d062b3a9ec457251a65c9cc30b/transformed/lifecycle-livedata-2.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/8d9183dabe01b1abb9789e2a76cdf5fa/transformed/core-runtime-2.1.0-api.jar:/Users/applezhang/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.1.0/b3152fc64428c9354344bd89848ecddc09b6f07e/core-common-2.1.0.jar:/Users/applezhang/.gradle/caches/transforms-3/e00e2257f539263a3e591b7dced41777/transformed/lifecycle-livedata-core-2.5.1-api.jar:/Users/applezhang/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.5.1/1fdb7349701e9cf2f0a69fc10642b6fef6bb3e12/lifecycle-common-2.5.1.jar:/Users/applezhang/.gradle/caches/transforms-3/9561968d3aa4db42beeda0793ab168dc/transformed/interpolator-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/e837f3b67a4f22e52b3f9c02aadd4fdd/transformed/documentfile-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/54dbe906f4df4335b3cde4b870de69ef/transformed/localbroadcastmanager-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/90e0102618df710f2cc85e6d94d3b25c/transformed/print-1.0.0-api.jar:/Users/applezhang/.gradle/caches/transforms-3/28431b3a42632f9c7056e45a89c867ce/transformed/jetified-annotation-jvm-1.6.0.jar:/Users/applezhang/.gradle/caches/transforms-3/3762e63980a6cd0a2dad70595fe2629b/transformed/jetified-kotlin-stdlib-1.8.10.jar:/Users/applezhang/.gradle/caches/transforms-3/a2792b5cec997dbf2b1c1b7674b59ae6/transformed/jetified-kotlin-stdlib-common-1.8.10.jar:/Users/applezhang/.gradle/caches/transforms-3/a7723c93fde12a0431544c9e33a5a0d9/transformed/jetified-annotations-13.0.jar:/Users/applezhang/.gradle/caches/transforms-3/1b24cb96d466ccf9216ace0d0511faf7/transformed/constraintlayout-2.1.4-api.jar:/Users/applezhang/Library/Android/sdk/platforms/android-32/android.jar:/Users/applezhang/Library/Android/sdk/build-tools/30.0.3/core-lambda-stubs.jar" />
+          <option name="noStdlib" value="true" />
+          <option name="noReflect" value="true" />
+          <option name="moduleName" value="app_debug" />
+          <option name="jvmTarget" value="1.8" />
+          <option name="languageVersion" value="1.5" />
+          <option name="apiVersion" value="1.5" />
+          <option name="pluginClasspaths">
+            <array />
+          </option>
+          <option name="pluginOptions">
+            <array />
+          </option>
+          <option name="errors">
+            <ArgumentParseErrors />
+          </option>
+        </compilerArguments>
+      </configuration>
+    </facet>
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="SELECTED_BUILD_VARIANT" value="debug" />
+        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="" />
+        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/../../../app/build/intermediates/javac/debug/classes" />
+    <output-test url="file://$MODULE_DIR$/../../../app/build/intermediates/javac/debugUnitTest/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../app">
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../app/build" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 32 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

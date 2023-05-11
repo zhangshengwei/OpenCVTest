@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    namespace 'com.rokid.aicoredemo'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.rokid.opencvTest"
+        minSdk 24
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                //abiFilters 'armeabi-v7a'     //glass
+                abiFilters 'arm64-v8a'
+            }
+        }
+
+        ndk {
+            //glass和头环版本
+//            abiFilters 'armeabi-v7a'   //glass和头环版本
+            abiFilters 'arm64-v8a'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    testImplementation 'junit:junit:4.13.2'
+
+    implementation 'androidx.core:core-ktx:1.6.20'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.20"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2'
+
+    // App compat and UI things
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    // 权限请求框架：https://github.com/getActivity/XXPermissions
+    implementation 'com.github.getActivity:XXPermissions:11.6'
+
+    // CameraX core library
+    def camerax_version = '1.1.0-alpha06'
+    implementation "androidx.camera:camera-core:$camerax_version"
+    // CameraX Camera2 extensions
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    // CameraX Lifecycle library
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+    // CameraX View class
+    implementation 'androidx.camera:camera-view:1.0.0-alpha24'
+    // If you want to additionally use the CameraX Extensions library
+    implementation("androidx.camera:camera-extensions:1.0.0-alpha26")
+    //WindowManager.camerax
+    implementation 'androidx.window:window:1.0.0-alpha06'
+
+    //setting
+    implementation("androidx.datastore:datastore-preferences:1.0.0-rc01")
+}
