@@ -6,6 +6,7 @@ import android.os.Build
 import android.util.DisplayMetrics
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.camera.core.ImageProxy
 import com.rokid.opencvtest.RokidApplication
 import java.io.File
 import java.io.FileNotFoundException
@@ -39,6 +40,65 @@ object Tools {
         //image.recycle()
         return pixels
     }
+
+
+    fun YUV_420_888toNV21(image: ImageProxy): ByteArray? {
+        var startTimeStamp = System.currentTimeMillis()
+        val width = image.width
+        val height = image.height
+        val ySize = width * height
+        val uvSize = width * height / 4
+        val nv21 = ByteArray(ySize + uvSize * 2)
+        val yBuffer = image.planes[0].buffer // Y
+        val uBuffer = image.planes[1].buffer // U
+        val vBuffer = image.planes[2].buffer // V
+        var rowStride = image.planes[0].rowStride
+        assert(image.planes[0].pixelStride == 1)
+        var pos = 0
+        if (rowStride == width) { // likely
+            yBuffer[nv21, 0, ySize]
+            pos += ySize
+        } else {
+            var yBufferPos = (width - rowStride).toLong() // not an actual position
+            while (pos < ySize) {
+                yBufferPos += (rowStride - width).toLong()
+                yBuffer.position(yBufferPos.toInt())
+                yBuffer[nv21, pos, width]
+                pos += width
+            }
+        }
+        rowStride = image.planes[2].rowStride
+        val pixelStride = image.planes[2].pixelStride
+        assert(rowStride == image.planes[1].rowStride)
+        assert(pixelStride == image.planes[1].pixelStride)
+        if (pixelStride == 2 && rowStride == width && uBuffer[0] == vBuffer[1]) {
+            val savePixel = vBuffer[1]
+            vBuffer.put(1, 0.toByte())
+            if (uBuffer[0].toInt() == 0) {
+                vBuffer.put(1, 255.toByte())
+                if (uBuffer[0].toInt() == 255) {
+                    vBuffer.put(1, savePixel)
+                    vBuffer[nv21, ySize, uvSize]
+                    return nv21 // shortcut
+                }
+            }
+
+            // unfortunately, the check failed. We must save U and V pixel by pixel
+            vBuffer.put(1, savePixel)
+        }
+
+        // other optimizations could check if (pixelStride == 1) or (pixelStride == 2),
+        // but performance gain would be less significant
+        for (row in 0 until height / 2) {
+            for (col in 0 until width / 2) {
+                val vuPos = col * pixelStride + row * rowStride
+                nv21[pos++] = vBuffer[vuPos]
+                nv21[pos++] = uBuffer[vuPos]
+            }
+        }
+        return nv21
+    }
+
 
     fun getNoMoreThanTwoDigits(number: Double): String {
         val format = DecimalFormat("0.##")

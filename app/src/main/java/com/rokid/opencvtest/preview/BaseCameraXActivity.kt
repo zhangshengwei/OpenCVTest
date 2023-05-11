@@ -13,6 +13,7 @@ import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.window.WindowManager
+import com.rokid.opencvtest.utils.Tools
 import java.io.File
 import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
@@ -48,13 +49,12 @@ abstract class BaseCameraXActivity : AppCompatActivity() {
 
     abstract fun getPreviewView(): PreviewView
     abstract fun handleNV21Data(nv21: ByteArray, width: Int, height: Int)
-    abstract fun needhandleData(): Boolean
     override fun onDestroy() {
         super.onDestroy()
         cameraExecutor.shutdown()
     }
 
-    abstract fun setScreen(width: Int, height: Int)
+//    abstract fun setScreen(width: Int, height: Int)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,9 +120,6 @@ abstract class BaseCameraXActivity : AppCompatActivity() {
         // Get screen metrics used to setup camera for full screen resolution
         val metrics = windowManager.getCurrentWindowMetrics().bounds
         val screenAspectRatio = aspectRatio(metrics.width(), metrics.height())
-
-        //aicore
-        setScreen(metrics.width(), metrics.height())
 
         // CameraProvider
         val cameraProvider = cameraProvider
@@ -190,7 +187,6 @@ abstract class BaseCameraXActivity : AppCompatActivity() {
             preview?.setSurfaceProvider(getPreviewView().surfaceProvider)
         } catch (exc: Exception) {
             finish()
-            Log.e(TAG, "Use case binding failed", exc)
         }
         /*} catch (e: Exception) {
             finish()
@@ -289,75 +285,19 @@ abstract class BaseCameraXActivity : AppCompatActivity() {
 
             /*      // Call all listeners with new value
               listeners.forEach { it(luma) }*/
-            if (needhandleData()) {
-                yuv420ToNv21(image)
-            }
+//            if (needhandleData()) {
+//
+//            }
+            yuv420ToNv21(image)
             image.close()
         }
 
-        private fun YUV_420_888toNV21(image: ImageProxy): ByteArray? {
-            var startTimeStamp = System.currentTimeMillis()
-            val width = image.width
-            val height = image.height
-            val ySize = width * height
-            val uvSize = width * height / 4
-            val nv21 = ByteArray(ySize + uvSize * 2)
-            val yBuffer = image.planes[0].buffer // Y
-            val uBuffer = image.planes[1].buffer // U
-            val vBuffer = image.planes[2].buffer // V
-            var rowStride = image.planes[0].rowStride
-            assert(image.planes[0].pixelStride == 1)
-            var pos = 0
-            if (rowStride == width) { // likely
-                yBuffer[nv21, 0, ySize]
-                pos += ySize
-            } else {
-                var yBufferPos = (width - rowStride).toLong() // not an actual position
-                while (pos < ySize) {
-                    yBufferPos += (rowStride - width).toLong()
-                    yBuffer.position(yBufferPos.toInt())
-                    yBuffer[nv21, pos, width]
-                    pos += width
-                }
-            }
-            rowStride = image.planes[2].rowStride
-            val pixelStride = image.planes[2].pixelStride
-            assert(rowStride == image.planes[1].rowStride)
-            assert(pixelStride == image.planes[1].pixelStride)
-            if (pixelStride == 2 && rowStride == width && uBuffer[0] == vBuffer[1]) {
-                // maybe V an U planes overlap as per NV21, which means vBuffer[1] is alias of uBuffer[0]
-                val savePixel = vBuffer[1]
-                vBuffer.put(1, 0.toByte())
-                if (uBuffer[0].toInt() == 0) {
-                    vBuffer.put(1, 255.toByte())
-                    if (uBuffer[0].toInt() == 255) {
-                        vBuffer.put(1, savePixel)
-                        vBuffer[nv21, ySize, uvSize]
-                        return nv21 // shortcut
-                    }
-                }
-
-                // unfortunately, the check failed. We must save U and V pixel by pixel
-                vBuffer.put(1, savePixel)
-            }
-
-            // other optimizations could check if (pixelStride == 1) or (pixelStride == 2),
-            // but performance gain would be less significant
-            for (row in 0 until height / 2) {
-                for (col in 0 until width / 2) {
-                    val vuPos = col * pixelStride + row * rowStride
-                    nv21[pos++] = vBuffer[vuPos]
-                    nv21[pos++] = uBuffer[vuPos]
-                }
-            }
-            return nv21
-        }
 
         fun yuv420ToNv21(image: ImageProxy): ByteArray? {
             var startTimeStamp = System.currentTimeMillis()
 
             try {
-                var nv21 = YUV_420_888toNV21(image)
+                var nv21 = Tools.YUV_420_888toNV21(image)
                 if (nv21 != null) {
                     handleNV21Data(nv21, image.width, image.height)
                 }

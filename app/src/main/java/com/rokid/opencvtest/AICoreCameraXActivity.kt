@@ -57,27 +57,10 @@ class AICoreCameraXActivity : BaseCameraXActivity() {
 
     }
 
-    override fun onStop() { 
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    override fun setScreen(width: Int, height: Int) {
-        //test
-        //painterView.setSize(Size(width, height))
-    }
 
 
     // 数据返回
     override fun handleNV21Data(nv21: ByteArray, width: Int, height: Int) {
-    }
-
-    //是否有勾选，有勾选之后才能发数据
-    override fun needhandleData(): Boolean {
-        return mHasDetectTypeChecked  
     }
 
 
