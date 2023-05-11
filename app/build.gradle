@@ -17,16 +17,17 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+
         externalNativeBuild {
             cmake {
-                //abiFilters 'armeabi-v7a'     //glass
                 abiFilters 'arm64-v8a'
             }
         }
 
+//
         ndk {
-            //glass和头环版本
-//            abiFilters 'armeabi-v7a'   //glass和头环版本
             abiFilters 'arm64-v8a'
         }
     }
@@ -41,6 +42,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
 }
 
 dependencies {
@@ -74,5 +82,5 @@ dependencies {
     implementation 'androidx.window:window:1.0.0-alpha06'
 
     //setting
-    implementation("androidx.datastore:datastore-preferences:1.0.0-rc01")
+//    implementation("androidx.datastore:datastore-preferences:1.0.0-rc01")
 }

@@ -9,8 +9,10 @@ import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
 import com.rokid.aicoredemo.R
+import com.rokid.opencvtest.nativetest.NativeManager
 import com.rokid.opencvtest.preview.BaseCameraXActivity
 import kotlinx.android.synthetic.main.activity_camerax_demo.*
+import java.lang.annotation.Native
 
 /** Helper type alias used for analysis use case callbacks */
 
@@ -36,6 +38,10 @@ class AICoreCameraXActivity : BaseCameraXActivity() {
 
         //此处待优化
         super.onCreate(savedInstanceState)
+
+        var nativeObj = NativeManager();
+        var result = nativeObj.add(1,999)
+        tvOrb?.text = "ORB 特征点数: ===>>> ${result}"
     }
 
     //app启动后只需要确认权限一次
@@ -64,8 +70,8 @@ class AICoreCameraXActivity : BaseCameraXActivity() {
 
     // 数据返回
     override fun handleNV21Data(nv21: ByteArray, width: Int, height: Int) {
-        var orbsize = 0;
-        tvOrb?.text = "ORB 特征点数: ===>>> ${orbsize}"
+        var orbsize = 0
+//        tvOrb?.text = "ORB 特征点数: ===>>> ${orbsize}"
     }
 
 
