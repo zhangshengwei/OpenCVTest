@@ -3,6 +3,7 @@ package com.rokid.opencvtest
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.camera.view.PreviewView
 import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
@@ -19,7 +20,9 @@ class AICoreCameraXActivity : BaseCameraXActivity() {
     //每次发送数据时，需要使用不同的frame id
     var mCurrFrameId = 0
     //是否有勾选
-    var mHasDetectTypeChecked = false 
+    var mHasDetectTypeChecked = false
+    var tvOrb :TextView ?= null
+
     override fun getPreviewView(): PreviewView {
         return camerax_view
     }
@@ -28,7 +31,7 @@ class AICoreCameraXActivity : BaseCameraXActivity() {
         setContentView(R.layout.activity_camerax_demo)
         //手机不锁屏
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-
+        tvOrb = findViewById(R.id.tv_orb) as TextView
         showSystemUI()
 
         //此处待优化
@@ -61,6 +64,8 @@ class AICoreCameraXActivity : BaseCameraXActivity() {
 
     // 数据返回
     override fun handleNV21Data(nv21: ByteArray, width: Int, height: Int) {
+        var orbsize = 0;
+        tvOrb?.text = "ORB 特征点数: ===>>> ${orbsize}"
     }
 
 
